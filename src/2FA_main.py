@@ -48,6 +48,9 @@ CASbutton = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "submitBtn"))
     )
 CASbutton.click()
+
+#----------------------------------------Past 2FA code, need to wait for user
+
 """
 for testing purposes
 
@@ -61,30 +64,40 @@ disabled_element = WebDriverWait(driver, 600).until(
 print("end of wait")
 driver.execute_script("arguments[0].removeAttribute('disabled');", disabled_element)
 print("The 'disabled' attribute has been removed.")
-"""
+
 
 print("start of wait")
 disabled_element = WebDriverWait(driver, 600).until(
         EC.presence_of_element_located((By.NAME, "term"))
     )
 
-#sleep_until_datetime(datetime(2026, 2, 26, 19, 31, 0))
 
-"""
+
 removes he hidden attribute from the selection button if still before registration
 
 for testing purposes
 """
+
+sleep_until_datetime(datetime(2026,2,27,8,0,0.1))
+driver.refresh()
+
+"""
+disabled_element = WebDriverWait(driver, 600).until(
+        EC.presence_of_element_located((By.NAME, "term"))
+    )
+
 print("end of wait")
 driver.execute_script("arguments[0].removeAttribute('disabled');", disabled_element)
 print("The 'disabled' attribute has been removed.")
-
+"""
 
 TermSelectButton = WebDriverWait(driver, 600).until(
         EC.element_to_be_clickable((By.NAME, "term"))
     )
 
+
 TermSelectButton.click()
+
 
 TermSubmitButton = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Select']")
 
@@ -104,7 +117,7 @@ crn3.send_keys("31786")
 
 submitCRNbutton = TermSubmitButton = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Submit Changes']")
 
-submitCRNbutton.click()
+#submitCRNbutton.click()
 
 input("Press Enter to Close")
 driver.quit()
