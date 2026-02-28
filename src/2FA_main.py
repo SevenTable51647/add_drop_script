@@ -78,7 +78,7 @@ removes he hidden attribute from the selection button if still before registrati
 for testing purposes
 """
 
-sleep_until_datetime(datetime(2026,2,27,8,0,0.1))
+sleep_until_datetime(datetime(2026,2,27,8,0,0,1))
 driver.refresh()
 
 """
@@ -117,7 +117,7 @@ crn3.send_keys("31786")
 
 submitCRNbutton = TermSubmitButton = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Submit Changes']")
 
-#submitCRNbutton.click()
+submitCRNbutton.click()
 
 input("Press Enter to Close")
 driver.quit()
